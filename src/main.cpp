@@ -1,11 +1,12 @@
 //******************************************************************************
 // File name:   main.cpp
-// Author:      CS Faculty
-// Date:        xx/xx/xxxx (Replace xx/xx/xxxx with month/day/year)
-// Class:       CS150-xx (Replace xx with your section number)
+// Author:      Hazel Swafford
+// Date:        9/17/2024
+// Class:       CS200-01
 // Assignment:  Hello World
-// Purpose:     Display the message Hello World to the screen
-// Hours:       0.25
+// Purpose:     Convert a specieifed base to equivalent numbers in the other 
+//              two bases
+// Hours:       0.0
 //******************************************************************************
 
 #include <iostream>
