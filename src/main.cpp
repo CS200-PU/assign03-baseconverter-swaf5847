@@ -23,7 +23,9 @@ using namespace std;
  Returned:	 	equivalent decimal number (0-9, 10, 11, 12, 13, 14, 15)
  *************************************************************************/
 int hexCharToInt (char hexDigit) {
+	int decimalNum;
 
+	return decimalNum;
 }
 
 
@@ -39,6 +41,16 @@ int hexCharToInt (char hexDigit) {
            	  • B if the number is binary.
  *************************************************************************/
 char getBase (const string& strNumber) {
+
+	if (strNumber.substr == "0x") {
+		return 'H';
+	}
+	else if (strNumber == "0b") {
+		return 'B';
+	}
+	else {
+		return 'D';
+	}
 
 }
 
@@ -66,7 +78,10 @@ string getNumber (const string& prompt) {
 
  Returns: 	void
  *************************************************************************/
-void printTitle (const string& myTitle);
+void printTitle (const string& myTitle) {
+	cout << myTitle;
+
+}
 
 
 /**************************************************************************
@@ -76,7 +91,9 @@ void printTitle (const string& myTitle);
 
  Returns: 	string representing the decimal equivalent
  *************************************************************************/
-string binaryToDecimal (const string& strNumber);
+string binaryToDecimal (const string& strNumber) {
+	int decimal = 0;
+}
 
 
 
@@ -87,7 +104,9 @@ string binaryToDecimal (const string& strNumber);
 
  Returns: 	string representing the binary equivalent
  *************************************************************************/
-string decimalToBinary (const string& strNumber);
+string decimalToBinary (const string& strNumber) {
+
+}
 
 
 /**************************************************************************
@@ -97,7 +116,9 @@ string decimalToBinary (const string& strNumber);
 
  Returns: 	string representing the hexadecimal equivalent
  *************************************************************************/
-string decimalToHex (const string& strNumber);
+string decimalToHex (const string& strNumber) {
+
+}
 
 
 /**************************************************************************
@@ -107,7 +128,10 @@ string decimalToHex (const string& strNumber);
 
  Returns: 	string representing the decimal equivalent
  *************************************************************************/
-string hexToDecimal (const string& strNumber);
+string hexToDecimal (const string& strNumber) {
+	int decimal = 0;
+
+}
 
 
 
@@ -118,7 +142,9 @@ string hexToDecimal (const string& strNumber);
 
  Returns: 	string representing the binary equivalent
  *************************************************************************/
-string hexToBinary (const string& strNumber);
+string hexToBinary (const string& strNumber) {
+
+}
 
 
 
@@ -129,7 +155,9 @@ string hexToBinary (const string& strNumber);
 
  Returns:  	string representing the hexadecimal equivalent
  *************************************************************************/
-string binaryToHex (const string& strNumber);
+string binaryToHex (const string& strNumber) {
+
+}
 
 
 /**************************************************************************
