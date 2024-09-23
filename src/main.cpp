@@ -23,9 +23,16 @@ using namespace std;
  Returned:	 	equivalent decimal number (0-9, 10, 11, 12, 13, 14, 15)
  *************************************************************************/
 int hexCharToInt (char hexDigit) {
-	int decimalNum;
+	const int DECIMAL_BASE = 10;
+	const char ZERO = '0', NINE = '9', A = 'A', F = 'F';
 
-	return decimalNum;
+	if (hexDigit >= ZERO && hexDigit <= NINE ) {
+		return hexDigit - ZERO;
+	}
+	else if (hexDigit >= A && hexDigit <= F) {
+		return hexDigit - A + DECIMAL_BASE;
+	}
+
 }
 
 
@@ -41,15 +48,18 @@ int hexCharToInt (char hexDigit) {
            	  • B if the number is binary.
  *************************************************************************/
 char getBase (const string& strNumber) {
+	const string HEX_INDICATOR = "0x", BINARY_INDICATOR = "0b";
+	const char HEX = 'H', BINARY = 'B', DECIMAL = 'D';
+	const int FIND_TRUE = 0;
 
-	if (strNumber.substr == "0x") {
-		return 'H';
+	if (strNumber.find (HEX_INDICATOR) == FIND_TRUE) {
+		return HEX;
 	}
-	else if (strNumber == "0b") {
-		return 'B';
+	else if (strNumber.find (BINARY_INDICATOR) == FIND_TRUE) {
+		return BINARY;
 	}
 	else {
-		return 'D';
+		return DECIMAL;
 	}
 
 }
@@ -92,7 +102,17 @@ void printTitle (const string& myTitle) {
  Returns: 	string representing the decimal equivalent
  *************************************************************************/
 string binaryToDecimal (const string& strNumber) {
+	const int BINARY_BASE = 2;
+	const char ZERO = '0';
 	int decimal = 0;
+
+	for (int i = 0; i < strNumber.length (); ++i) {
+		decimal *= BINARY_BASE;
+
+		decimal += static_cast<int> (strNumber[i] - ZERO);
+	}
+
+	return to_string(decimal);
 }
 
 
@@ -105,6 +125,16 @@ string binaryToDecimal (const string& strNumber) {
  Returns: 	string representing the binary equivalent
  *************************************************************************/
 string decimalToBinary (const string& strNumber) {
+	const int ZERO = 0, BINARY_BASE = 2;
+	int stringDecimal = stoi (strNumber);
+	string binaryResult;
+
+	while (stringDecimal > ZERO) {
+		binaryResult = to_string (stringDecimal % BINARY_BASE) + binaryResult;
+		stringDecimal /= BINARY_BASE;
+	}
+
+	return binaryResult;
 
 }
 
@@ -117,6 +147,18 @@ string decimalToBinary (const string& strNumber) {
  Returns: 	string representing the hexadecimal equivalent
  *************************************************************************/
 string decimalToHex (const string& strNumber) {
+	const int DECIMAL_BASE = 10;
+	const char A = 'A';
+	int stringDecimal;
+
+	stringDecimal = stoi(strNumber);
+
+	if (stringDecimal < DECIMAL_BASE) {
+		return to_string (stringDecimal);
+	}
+	else if {
+		return A + decimalToHex (to_string (stringDecimal % DECIMAL_BASE));
+	}
 
 }
 
@@ -129,7 +171,24 @@ string decimalToHex (const string& strNumber) {
  Returns: 	string representing the decimal equivalent
  *************************************************************************/
 string hexToDecimal (const string& strNumber) {
-	int decimal = 0;
+	const int HEX_BASE = 16, TEN = 10;
+	int stringDecimal = 0;
+	char stringCharacter;
+
+	for (int i = 0; i < strNumber.length(); ++i) {
+		stringCharacter = toupper (strNumber[i]);
+		if (!isdigit (stringCharacter)) {
+			stringDecimal *= HEX_BASE;
+
+			stringDecimal += hexCharToInt (stringCharacter);
+		} 
+		else {
+			stringDecimal *= TEN;
+		}
+
+	}
+
+	return to_string (stringDecimal);
 
 }
 
@@ -143,6 +202,12 @@ string hexToDecimal (const string& strNumber) {
  Returns: 	string representing the binary equivalent
  *************************************************************************/
 string hexToBinary (const string& strNumber) {
+	const int HEX_BASE = 16;
+	int stringNum;
+
+	stringNum = stoi (strNumber, nullptr, HEX_BASE);
+
+	return binaryToDecimal (hexToBinary ("" + to_string (stringNum)));
 
 }
 
@@ -156,6 +221,12 @@ string hexToBinary (const string& strNumber) {
  Returns:  	string representing the hexadecimal equivalent
  *************************************************************************/
 string binaryToHex (const string& strNumber) {
+	const int BASE_HEX = 16;
+	int stringDecimal;
+
+	stringDecimal = stoi (strNumber, nullptr, BASE_HEX);
+
+	return (binaryToDecimal (hexToBinary ("" + to_string (stringDecimal))));
 
 }
 
@@ -189,7 +260,7 @@ int main () {
 	 strUserInput = getNumber (PROMPT);
 	 base = getBase(strUserInput);
 		
-	 if (strUserInput == 'q') {
+	 if (strUserInput == QUIT) {
 		 break;
 		}
 
