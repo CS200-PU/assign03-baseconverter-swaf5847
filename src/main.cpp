@@ -14,8 +14,6 @@
 
 using namespace std;
 
-
-
 /**************************************************************************
  Function: 	 	hexCharToInt
 
@@ -271,7 +269,7 @@ int main () {
 		 break;
 		}
 
-	 base = getBase(strUserInput);
+	 base = getBase (strUserInput);
 
 	 switch (base) {
 		
