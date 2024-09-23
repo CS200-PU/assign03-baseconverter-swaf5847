@@ -1,7 +1,7 @@
 //******************************************************************************
 // File name:   main.cpp
 // Author:      Hazel Swafford
-// Date:        9/17/2024
+// Date:        9/23/2024
 // Class:       CS200-01
 // Assignment:  Hello World
 // Purpose:     Convert a specieifed base to equivalent numbers in the other 
